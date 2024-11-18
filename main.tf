@@ -1,7 +1,12 @@
-module "vpc" {
-  source = "git::https://github.com/amitku13/vpc.git?ref=main"
+resource "aws_subnet" "example" {
+  vpc_id     = var.vpc_id
+  cidr_block = var.cidr_block
 
-  # Replace these with the correct names expected by the module
-  cidr_block          = "10.0.0.0/16"   # Example: if the module expects 'cidr_block'
-  enable_dns_support  = true            # Example: if the module uses 'enable_dns_support'
+  tags = {
+    Name = var.subnet_name
+  }
+}
+
+output "subnet_id" {
+  value = aws_subnet.example.id
 }
