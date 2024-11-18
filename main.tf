@@ -6,7 +6,3 @@ resource "aws_subnet" "example" {
     Name = var.subnet_name
   }
 }
-
-output "subnet_id" {
-  value = aws_subnet.example.id
-}
